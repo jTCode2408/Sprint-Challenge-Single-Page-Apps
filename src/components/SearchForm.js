@@ -17,7 +17,7 @@ import React, {
 import axios from "axios";
 
 export default function SearchForm() {
-  // NOTE: The value given to setState() must be of the same type as your value is expected to be
+
   const [names, setNames] = useState([]);
   const [query, setQuery] = useState("");
   useEffect(() => {
@@ -28,8 +28,7 @@ export default function SearchForm() {
         const search = response.data.results;
         console.log(response.data.results);
         const result = search.filter(character =>
-          // spell is the name of the data I am trying to display from the given endpoint
-          // try taking the .toLowerCase out for each part and see what happens when you search. You can search but doesn't find the spells as accurately.
+        
           character.name
             .toLowerCase()
             .includes(query.toLowerCase())

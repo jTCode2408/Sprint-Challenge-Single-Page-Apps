@@ -5,7 +5,7 @@ import SearchForm from "./components/SearchForm";
 export default function App() {
   return (
     <main>
-        {/* <Header /> */}
+        <Header />
         
       <Router/>
       <SearchForm/>
