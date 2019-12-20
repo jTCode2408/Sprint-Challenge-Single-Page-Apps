@@ -14,7 +14,7 @@ const Router = () => {
 
 <h2>Home </h2>
 <div>
-<Link to = "/ "> Home</Link>
+<Link to = "/"> Home</Link>
 </div>
 <div>
     <Link to = "./components/CharacterList"> CharacterList</Link>
@@ -22,7 +22,7 @@ const Router = () => {
     <Route path = '/components/CharacterList'>
         <CharacterList/>
     </Route>
-    <Route path = '/'>
+    <Route exact path  = '/'>
         <WelcomePage/>
     </Route>
 
