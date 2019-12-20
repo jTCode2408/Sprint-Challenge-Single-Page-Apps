@@ -1,10 +1,76 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
+
+// export default function SearchForm() {
+ 
+//   return (
+//     <section className="search-form">
+//      // Add a search form here
+//     </section>
+//   );
+// }
+
+
+import React, {
+  useEffect,
+  useState
+} from "react";
+import axios from "axios";
 
 export default function SearchForm() {
- 
+  // NOTE: The value given to setState() must be of the same type as your value is expected to be
+  const [names, setNames] = useState([]);
+  const [query, setQuery] = useState("");
+  useEffect(() => {
+    axios
+      .get(
+        `https://rickandmortyapi.com/api/character/`)
+      .then(response => {
+        const search = response.data.results;
+        console.log(response.data.results);
+        const result = search.filter(character =>
+          // spell is the name of the data I am trying to display from the given endpoint
+          // try taking the .toLowerCase out for each part and see what happens when you search. You can search but doesn't find the spells as accurately.
+          character.name
+            .toLowerCase()
+            .includes(query.toLowerCase())
+        );
+        setNames(result);
+      });
+  }, [query]);
+  const handleInputChange = event => {
+    setQuery(event.target.value);
+  };
+
   return (
-    <section className="search-form">
-     // Add a search form here
-    </section>
+    <div className="name-search">
+      <form className="search">
+        <input
+          type="text"
+          onChange={handleInputChange}
+          value={query}
+          name="name"
+          tabIndex="0"
+          className="prompt search-name"
+          placeholder="search by name"
+          autoComplete="off"
+        />
+      </form>
+      <div className="search">
+        {names.map(name => {
+          return (
+            <div
+              className="char-search"
+              key={name.id}
+            >
+              <h2>
+               
+                {name.name}
+              </h2>
+             
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 }
