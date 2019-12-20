@@ -14,7 +14,7 @@ const {path, url} = useRouteMatch();
   return (
     <div>
 <Link to = {`${url}/components/CharacterList`}>
-      Movies
+      Characters
     </Link>
     <Route path = {`${path}/components/ChracterList/:id`}>
     </Route>

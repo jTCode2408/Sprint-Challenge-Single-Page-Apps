@@ -55,17 +55,17 @@ export default function SearchForm() {
           autoComplete="off"
         />
       </form>
-      <div className="search">
+      <div className="search-return">
         {names.map(name => {
           return (
             <div
               className="char-search"
               key={name.id}
             >
-              <h2>
+              <p>
                
                 {name.name}
-              </h2>
+              </p>
              
             </div>
           );

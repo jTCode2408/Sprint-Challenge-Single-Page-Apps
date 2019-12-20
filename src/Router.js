@@ -12,20 +12,20 @@ const Router = () => {
 
 <div>
 
-<h2>Home </h2>
 <div>
-<Link to = "/"> Home</Link>
+<Link to = "/"> <h2>Home</h2></Link>
 </div>
 <div>
-    <Link to = "./components/CharacterList"> CharacterList</Link>
-<Switch>
-    <Route path = '/components/CharacterList'>
+    <Link to = "/components/CharacterList"> <h2>CharacterList</h2></Link>
+
+    <Switch>
+
+    <Route  path = "/components/CharacterList">
         <CharacterList/>
     </Route>
-    <Route exact path  = '/'>
+    <Route exact path  = "/">
         <WelcomePage/>
     </Route>
-
     </Switch>
 </div>
 
