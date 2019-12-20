@@ -10,10 +10,10 @@ const [characters, setCharacters] = useState([])
     //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
     // const getCharacter = () =>{
       axios
-      .get('https://rickandmortyapi.com/api/character')
+      .get('https://rickandmortyapi.com/api/character/')
       .then(response => {
         console.log(response.data.results);
-        setCharacters(response.data);
+        setCharacters(response.data.results);
       })
       .catch (error => {
         console.log('Sever Error', error);
@@ -39,17 +39,73 @@ const [characters, setCharacters] = useState([])
       }
 
 function CharacterInfo ({ character }) {
-  const {props} = character;
+  const {name, status, species, gender, image } = character;
   return (
     <Link to = {`${character.id}`}
     key= {character.id}>
-      Name{props.name}
-      Status{props.status}
-      Species {props.species}
-      Gender {props.gender}
+     <h3> name:{name}</h3>
+     <h4>  status:{status}</h4>
+    <p>  species: {species}</p>
+    <p>  gender: {gender}</p>
+    <img src = {image}/>
 
 </Link>
   );
 }
 
 export default CharacterList;
+
+
+// import React, {useState, useEffect} from "react";
+// import {Link, Route} from "react-router-dom"
+// import SearchForm from "./SearchForm"
+// import Axios from "axios"
+// import CharacterCard from "./CharacterCard"
+
+// export default function CharacterList(props) {
+//   const {chars, setChars} = props
+//   const [search, setSearch] = useState('')
+//   const [fullObj, setFullObj] = useState({})
+//   const handleChange = event=> {
+//     const {value} = event.target
+//     setSearch(value)
+//   }
+//   const handleSubmit = event=>{
+//     event.preventDefault()
+//     const filteredChars = chars.filter(ele => ele.name.toLowerCase().includes(search.toLowerCase()))
+//     setChars(filteredChars)
+//   }
+  
+//   useEffect(()=> {
+//     Axios
+//       .get("https://rickandmortyapi.com/api/character/")
+//       .then(res=> {
+//         console.log(res)
+//         const charArray = res.data.results
+//         setChars(charArray)
+//       })
+//       .catch(err=>console.log(err))
+//       // return setNextPage("https://rickandmortyapi.com/api/character/")
+//   }, [])
+  
+//   return (
+//     <section className="character-list">
+//       <SearchForm 
+//         search={search} 
+//         handleChange={handleChange} 
+//         handleSubmit={handleSubmit}
+//       />
+//       <h2>Character List</h2>
+//       {chars.map(person=> {
+//         return (
+//           <Link key={person.id} to={`/characters/${person.id}`}>
+//             <p>{person.name}</p>
+//           </Link>
+//         )
+//       })}
+//       <Route path="/characters/:id" render={(props)=> {
+//         return <CharacterCard props={props} chars={chars}/>
+//       }}/>
+//     </section>
+//   );
+// }
