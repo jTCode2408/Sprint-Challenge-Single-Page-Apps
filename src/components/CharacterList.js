@@ -56,20 +56,6 @@ function CharacterInfo ({ character }) {
 export default CharacterList;
 
 
-// import React, {useState, useEffect} from "react";
-// import {Link, Route} from "react-router-dom"
-// import SearchForm from "./SearchForm"
-// import Axios from "axios"
-// import CharacterCard from "./CharacterCard"
-
-// export default function CharacterList(props) {
-//   const {chars, setChars} = props
-//   const [search, setSearch] = useState('')
-//   const [fullObj, setFullObj] = useState({})
-//   const handleChange = event=> {
-//     const {value} = event.target
-//     setSearch(value)
-//   }
 //   const handleSubmit = event=>{
 //     event.preventDefault()
 //     const filteredChars = chars.filter(ele => ele.name.toLowerCase().includes(search.toLowerCase()))
